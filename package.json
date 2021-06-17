@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "migrate": "npx knex migrate:latest",
     "dev": "nodemon -r dotenv/config src/app.ts"
   },
   "dependencies": {
