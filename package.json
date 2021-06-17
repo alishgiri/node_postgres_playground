@@ -7,6 +7,7 @@
     "seed:run": "npx knex seed:run",
     "seed:make": "npx knex seed:make",
     "migrate": "npx knex migrate:latest",
+    "migrate:down": "npx knex migrate:down",
     "dev": "nodemon -r dotenv/config src/app.ts"
   },
   "dependencies": {
