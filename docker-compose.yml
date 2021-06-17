@@ -1,9 +1,9 @@
 version: "3.8"
 
 services:
-  app:
-    container_name: app
-    image: app
+  playground:
+    container_name: playground_app
+    image: playground_node_pg_knex
     build: .
     command: yarn dev
     restart: always
@@ -12,18 +12,18 @@ services:
     volumes:
       - ./src:/usr/app/src
     depends_on:
-      - app_pg
+      - playground_pg
 
-  app_pg:
-    image: postgres:13.2-alipine
-    container_name: app_database
+  playground_pg:
+    image: postgres:13.3-alpine
+    container_name: playground_pg_db
     env_file: .env
     ports:
       - "5432:5432"
     environment:
       POSTGRES_PASSWORD: $DB_PASSWORD
     volumes:
-      - app_db:/var/lib/postgresql/data
+      - playground_db:/var/lib/postgresql/data
 
 volumes:
-  app_db:
+  playground_db:
