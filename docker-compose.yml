@@ -10,7 +10,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./src:/usr/app/src
+      - ./:/usr/app
     depends_on:
       - playground_pg
 
