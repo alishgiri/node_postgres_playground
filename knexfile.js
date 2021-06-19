@@ -6,14 +6,16 @@ module.exports = {
   development: {
     client: "postgresql",
     connection: {
-      user: "postgres",
-      host: "localhost",
-      password: "postgres",
-      database: "playground_pg_db",
-      // user: DB_USER,
-      // database: DB_NAME,
+      // USE THIS FOR knex migrate AND seed.
+      // user: "postgres",
       // host: "localhost",
-      // password: DB_PASSWORD,
+      // password: "postgres",
+      // database: "playground_pg_db",
+
+      user: DB_USER,
+      database: DB_NAME,
+      password: DB_PASSWORD,
+      host: "playground_pg_db",
     },
     pool: {
       min: 2,
