@@ -12,6 +12,7 @@ dbConfig();
 
 initRoutes(app);
 
-app.listen(PORT, () => {
-  console.log("Listening on port:", PORT);
+const defaultPort = 2021;
+app.listen(PORT || defaultPort, () => {
+  console.log("Listening on port:", PORT || defaultPort);
 });
