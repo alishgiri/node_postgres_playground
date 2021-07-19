@@ -1,9 +1,9 @@
-const redisClient = require("../redis/redis_client");
+const redis = require("../redis/redis_client");
 
 module.exports = {
   getPage: async (req, res) => {
-    redisClient.incr("REDIS_KEY");
-    redisClient.get("REDIS_KEY", (err, reply) => {
+    redis.client.incr("REDIS_KEY");
+    redis.client.get("REDIS_KEY", (err, reply) => {
       res.send(
         `
             <html>
@@ -19,5 +19,11 @@ module.exports = {
       );
       res.end();
     });
+  },
+
+  publishOnRedis: (req, res) => {
+    const info = `Request on ${req.socket.localPort} for ${req.url}`;
+    redis.publishClient.publish("REQUESTS", info);
+    res.send(info);
   },
 };

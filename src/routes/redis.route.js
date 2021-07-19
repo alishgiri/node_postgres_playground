@@ -1,7 +1,9 @@
 const router = require("express").Router();
 
-const { getPage } = require("../controllers/redis.controller");
+const _ = require("../controllers/redis.controller");
 
-router.get("/", getPage);
+router.get("/", _.getPage);
+
+router.get("/publish", _.publishOnRedis);
 
 module.exports = router;
