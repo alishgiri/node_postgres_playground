@@ -10,7 +10,7 @@ module.exports = {
       // user: "postgres",
       // host: "localhost",
       // password: "postgres",
-      // database: "playground_pg_db",
+      // database: "postgres",
 
       user: DB_USER,
       database: DB_NAME,
