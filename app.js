@@ -7,7 +7,7 @@ const initSocketIO = require("./src/socket.io/config");
 const app = express();
 
 app.use(express.json());
-app.use(express.static("static"));
+app.use(express.static("src/static/"));
 
 const { PORT } = process.env;
 
