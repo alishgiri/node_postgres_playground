@@ -4,8 +4,10 @@ const initSocketIO = (server) => {
   const io = socketio(server);
 
   io.on("connection", (socket) => {
-    console.log("A socket is now open!");
-    console.log(socket);
+    socket.on("name", (name) => {
+      console.log(name + " says hello!");
+      io.emit("name", name);
+    });
   });
 };
 
