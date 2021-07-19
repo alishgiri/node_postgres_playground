@@ -3,12 +3,15 @@ const socket = io({
   transports: ["websocket"],
 });
 
+const addLi = (message) => {
+  const li = document.createElement("li");
+  li.appendChild(document.createTextNode(message));
+  document.getElementById("list").appendChild(li);
+};
+
 document.getElementById("send").addEventListener("click", (e) => {
   socket.emit("name", document.getElementById("name").value);
 });
 
-socket.on("name", (name) => {
-  const li = document.createElement("li");
-  li.appendChild(document.createTextNode(name + " says Hello!"));
-  document.getElementById("list").appendChild(li);
-});
+socket.on("name", (name) => addLi(name + " says Hello!"));
+socket.on("user.events", addLi);
