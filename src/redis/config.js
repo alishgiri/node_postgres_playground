@@ -1,5 +1,5 @@
 module.exports = {
-  redis_port: 16379,
+  redis_port: 6379,
   expire: 60 * 60 * 1000,
-  redis_host: "192.168.0.101",
+  redis_host: "playground_redis",
 };

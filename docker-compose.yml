@@ -13,6 +13,7 @@ services:
       - ./:/usr/app
     depends_on:
       - playground_postgres
+      - playground_redis
 
   playground_postgres:
     image: postgres:alpine
@@ -24,6 +25,12 @@ services:
       POSTGRES_PASSWORD: $DB_PASSWORD
     volumes:
       - playground_db:/var/lib/postgresql/data
+
+  playground_redis:
+    image: redis:alpine
+    container_name: playground_redis
+    ports:
+      - "16379:6379"
 
 volumes:
   playground_db:
