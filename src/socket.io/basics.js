@@ -58,4 +58,24 @@ module.exports.initSocketIO = (server) => {
   //     io.to("odd").emit("event", "Odd Room");
   //   }, 5000);
   // });
+
+  // NAMESPACE in socket.io
+  const namespace = io.of("/namespace");
+  namespace.on("connection", (socket) => {
+    namespace.emit("event", "Connected to Namespace");
+    // this is a different namespace
+    io.emit("event", "normal");
+  });
+  // In the Fron-end
+  // <script>
+  const socket = io("/namespace", {
+    transport: ["websocket", { upgrade: false }],
+  });
+  const addLi = (message) => {
+    const li = document.createElement("li");
+    li.appendChild(document.createTextNode(message));
+    document.getElementById("list").appendChild(li);
+  };
+  socket.on("event", addLi);
+  // </script>
 };

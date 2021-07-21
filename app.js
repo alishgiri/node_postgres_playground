@@ -2,7 +2,7 @@ const express = require("express");
 
 const dbConfig = require("./db/db_config");
 const { initRoutes } = require("./src/routes");
-const { initSocketIO } = require("./src/socket.io/config");
+const { initSocketIO } = require("./src/socket.io/basics");
 
 const app = express();
 
