@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   node_playground:
-    image: node/playground
+    image: node/pg/playground
     container_name: node-playground
     build: .
     command: yarn dev
@@ -15,7 +15,7 @@ services:
       - playground_postgres
 
   playground_postgres:
-    image: postgres
+    image: postgres:alpine
     container_name: playground_postgres
     env_file: .env
     ports:
