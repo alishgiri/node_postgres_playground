@@ -46,13 +46,11 @@ module.exports.initSocketIO = (server) => {
   // // ROOMS in socket.io;
   // io.on("connection", (socket) => {
   //   const now = Date.now();
-
   //   if (now % 2 === 0) {
   //     socket.join("even");
   //   } else {
   //     socket.join("odd");
   //   }
-
   //   io.to("even").emit("event", "Even Room " + now);
   //   io.to("odd").emit("event", "Odd Room " + now);
   //   setTimeout(() => {
