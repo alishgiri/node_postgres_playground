@@ -1,8 +1,10 @@
 const express = require("express");
+const socketio = require("socket.io");
 
 const dbConfig = require("./db/db_config");
 const { initRoutes } = require("./src/routes");
 const { initSocketIO } = require("./src/socket.io/basics");
+const { initSocketIoRooms } = require("./src/socket.io/rooms_example");
 
 const app = express();
 
@@ -20,4 +22,6 @@ const server = app.listen(PORT || defaultPort, () => {
   console.log("Listening on port:", PORT || defaultPort);
 });
 
-initSocketIO(server);
+const io = socketio(server);
+initSocketIO(io);
+initSocketIoRooms(io);

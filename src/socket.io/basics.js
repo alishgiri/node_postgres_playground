@@ -1,4 +1,3 @@
-const socketio = require("socket.io");
 const { storeUser, getUser } = require("../services/redis.service");
 
 const errorEmit = (socket) => {
@@ -8,9 +7,7 @@ const errorEmit = (socket) => {
   };
 };
 
-module.exports.initSocketIO = (server) => {
-  const io = socketio(server);
-
+module.exports.initSocketIO = (io) => {
   io.on("connection", (socket) => {
     // Using broadcast everyone but not self gets the message
     socket.broadcast.emit("user.events", "Someone has joined!");
@@ -66,16 +63,16 @@ module.exports.initSocketIO = (server) => {
     // this is a different namespace
     io.emit("event", "normal");
   });
-  // In the Fron-end
-  // <script>
-  const socket = io("/namespace", {
-    transport: ["websocket", { upgrade: false }],
-  });
-  const addLi = (message) => {
-    const li = document.createElement("li");
-    li.appendChild(document.createTextNode(message));
-    document.getElementById("list").appendChild(li);
-  };
-  socket.on("event", addLi);
-  // </script>
+  // // In the Fron-end
+  // // <script>
+  // const socket = io("/namespace", {
+  //   transport: ["websocket", { upgrade: false }],
+  // });
+  // const addLi = (message) => {
+  //   const li = document.createElement("li");
+  //   li.appendChild(document.createTextNode(message));
+  //   document.getElementById("list").appendChild(li);
+  // };
+  // socket.on("event", addLi);
+  // // </script>
 };
