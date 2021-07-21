@@ -35,11 +35,29 @@ module.exports.initSocketIO = (server) => {
     });
   });
 
-  // No broadcast everyone including self gets the message
+  // // No broadcast everyone including self gets the message
   // io.on("connection", (socket) => {
   //   socket.on("name", (name) => {
   //     console.log(name + " says hello!");
   //     io.emit("name", name);
   //   });
+  // });
+
+  // // ROOMS in socket.io;
+  // io.on("connection", (socket) => {
+  //   const now = Date.now();
+
+  //   if (now % 2 === 0) {
+  //     socket.join("even");
+  //   } else {
+  //     socket.join("odd");
+  //   }
+
+  //   io.to("even").emit("event", "Even Room " + now);
+  //   io.to("odd").emit("event", "Odd Room " + now);
+  //   setTimeout(() => {
+  //     io.to("even").emit("event", "Even Room");
+  //     io.to("odd").emit("event", "Odd Room");
+  //   }, 5000);
   // });
 };
