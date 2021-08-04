@@ -5,6 +5,7 @@ const dbConfig = require("./db/db_config");
 const { initRoutes } = require("./src/routes");
 const { initSocketIO } = require("./src/socket.io/basics");
 const { initSocketIoRooms } = require("./src/socket.io/rooms_example");
+const { initRealTimeGameConcept } = require("./src/socket.io/game_app_concept");
 
 const app = express();
 
@@ -25,3 +26,4 @@ const server = app.listen(PORT || defaultPort, () => {
 const io = socketio(server);
 initSocketIO(io);
 initSocketIoRooms(io);
+initRealTimeGameConcept(io);
