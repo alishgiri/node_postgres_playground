@@ -16,7 +16,7 @@ module.exports.initSocketIoRooms = (io) => {
     });
 
     socket.on("event", (e) => {
-      socket.broadcast.to(e.room).emit("event", e.name + " says hello!");
+      socket.broadcast.to(e.room).emit("event", e.message);
     });
   });
 };
