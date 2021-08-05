@@ -8,9 +8,8 @@ module.exports.initRealTimeGameConcept = (io) => {
       setTimeout(() => {
         socket.join(room);
         socket.emit("activities", `Joined room "${room}".`);
-        socket.broadcast
-          .to(room)
-          .emit("activities", `"${userColor}" joined the room "${room}".`);
+        const activity = `"${userColor}" joined the room "${room}".`;
+        socket.broadcast.to(room).emit("activities", activity);
       }, 0);
     });
 
