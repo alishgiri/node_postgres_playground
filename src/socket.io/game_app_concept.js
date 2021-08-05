@@ -1,9 +1,6 @@
 module.exports.initRealTimeGameConcept = (io) => {
-  const players = [];
   io.on("connection", (socket) => {
     socket.on("game-room.join", ({ room, userColor }) => {
-      console.log("Socket", socket);
-      console.log("Game Rooms", socket.rooms);
       Array.from(socket.rooms)
         .filter((r) => r !== socket.id)
         .forEach((r) => socket.leave(r));
